@@ -9,7 +9,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         json_data = json.loads(post_data)
 
         for obj in json_data:
-            print(f"Nome: {obj['nome']}, Valor: {obj['valor']}, Choice: {obj['choice']}")
+            print(f"Nome: {obj['nome']}, Valor: {obj['valor']}, Choice: {obj['choice']}, Intervalo: {obj['intervalo']}")
 
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')

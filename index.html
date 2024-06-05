@@ -10,7 +10,6 @@
 
     <div class="container-fluid">
 
-
         <div class="container-box-inicial">
             <h1>A DIFERENÇA MÍNIMA À DIMINUIR DO VALOR VAI SER EM</h1>
             <div>
@@ -19,20 +18,29 @@
             </div>
         </div>
 
-         <div class="container-box"> 
+
+        <div class="con">
+            <div class="container-box"> 
                 <h1 class="title">Seja Bem Vindo ao Robot</h1>
-
+    
                 <div class="form">
-
+    
                 </div>
+            </div>
+    
+            <button onclick="startServer()" class="mt-2 submit-button">COMEÇAR</button>
+        </div>
 
-                <button type="button" id="createNewProduct"> + </button>
-         </div>
-        <p class="info-in">Clique o + para adicionar novos produtos</p>
 
-        <button onclick="startServer()" class="mt-2 submit-button">COMEÇAR</button>
     </div>
 
+    <div class="modal">
+        <p>QUANTIDADE DE PRODUTOS</p>
+        <input id="productsN" placeholder="valor numérico">
+        <input id="intervaloLances" placeholder="Intervalo minimo entre lances">
+
+        <button onclick="createProducts()">+</button>
+    </div>
 
     <script src="./index.js"></script>
     

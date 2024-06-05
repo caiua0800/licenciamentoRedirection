@@ -1,51 +1,31 @@
 
 let choice = '';
-
+let intervalo = ''
 function setChoice(e){
     (e.id === 'percentual') ? choice = 'percentual' : choice = 'real';
     
-    document.querySelector('.info-in').style.display = 'block';
-    document.querySelector('.container-box').style.display = 'flex';
-    document.querySelector('.submit-button').style.display = 'block';
     document.querySelector('.container-box-inicial').style.display = 'none';
+    document.querySelector('.modal').style.display = 'flex';
+
 
 }
 
-function removeItem(element){
-    element.parentNode.remove();
-}
+function createProducts(){
+    let qtde = document.querySelector('#productsN').value;
+    intervalo = document.querySelector("#intervaloLances").value
+    if(!qtde)
+        window.location.reload();
 
-function checkInputsEmpty() {
-    let inputs = document.querySelectorAll('input[type="text"], input[type="number"]');
-    
-    for (let input of inputs) {
-        if (input.value === "") {
-            return false;
-        }
-    }
-    
-    return true;
-}
+    let pai = document.querySelector('.form')
 
-
-let createNewProductButton = document.querySelector('#createNewProduct');
-
-createNewProductButton.addEventListener('click', () => {
-    let info_in = document.querySelector('.info-in');
-
-    info_in.style.display = 'none'
-
-    let formDiv = document.querySelector('.form');
-
-    if (checkInputsEmpty()) {
+    for(let i = 0; i < qtde; i++){
         let formGroup = document.createElement('div');
         formGroup.className = "form-group";
-
-
-        let inputNome = document.createElement('input');
-        inputNome.placeholder = 'Nome do Produto';
-
-
+    
+        let h4 = document.createElement('h4');
+        h4.style.marginBottom = '5px'
+        h4.textContent = `Item ${i+1}`
+    
         let inputValor = document.createElement('input');
         inputValor.type = "number";
         
@@ -54,23 +34,18 @@ createNewProductButton.addEventListener('click', () => {
         else
             inputValor.placeholder = 'Valor Mínimo'
 
-
-        let infoInSpan = document.createElement('span');
-        infoInSpan.className = "remove-x";
-        infoInSpan.addEventListener('click', () => {removeItem(infoInSpan)})
-        infoInSpan.textContent = 'X';
-
-
-
-        formGroup.appendChild(inputNome)
+        formGroup.appendChild(h4)
         formGroup.appendChild(inputValor)
-        formGroup.appendChild(infoInSpan)
-
-        formDiv.appendChild(formGroup)
-    } else {
-        alert("Preencha todos os campos antes de adicionar um novo produto.");
+    
+        pai.appendChild(formGroup);
     }
-});
+
+    document.querySelector('.modal').style.display = 'none';
+    document.querySelector('.container-box').style.display = 'flex';
+    document.querySelector('.submit-button').style.display = 'block';
+
+}
+
 
 function startServer(){
 
@@ -78,15 +53,17 @@ function startServer(){
 
     const forms = document.querySelectorAll('.form-group');
     forms.forEach(form => {
-        let inputs = form.querySelectorAll('input');
-        let inputNome = inputs[0].value;
-        let inputValor = inputs[1].value;
+
+        let valor = form.querySelector('input').value;
+        let item = form.querySelector('h4').textContent;
 
         let obj = {
-            nome: inputNome,
-            valor: inputValor,
-            choice: choice
+            nome: item,
+            valor: valor,
+            choice: choice,
+            intervalo: intervalo
         }
+        console.log(obj)
         objects.push(obj);
     })
 
