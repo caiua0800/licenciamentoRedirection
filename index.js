@@ -110,4 +110,8 @@ function startServer(){
         console.error('Error:', error);
       });
 
+      alert('CLIQUE EM OK E SERÁ REDIRECIONADO');
+
+      window.location.href = 'http://comprasnet.gov.br/seguro/loginPortal.asp'
+
 }
