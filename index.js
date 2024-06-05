@@ -85,7 +85,7 @@ function startServer(){
         let obj = {
             nome: inputNome,
             valor: inputValor,
-            choice: choicewha
+            choice: choice
         }
         objects.push(obj);
     })
