@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PÁGINA INICIAL</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+    <div class="container-fluid">
+
+
+        <div class="container-box-inicial">
+            <h1>A DIFERENÇA MÍNIMA À DIMINUIR DO VALOR VAI SER EM</h1>
+            <div>
+                <button onclick="setChoice(this)" id="real">R$</button>
+                <button onclick="setChoice(this)" id="percentual">%</button>
+            </div>
+        </div>
+
+         <div class="container-box"> 
+                <h1 class="title">Seja Bem Vindo ao Robot</h1>
+
+                <div class="form">
+
+                </div>
+
+                <button type="button" id="createNewProduct"> + </button>
+         </div>
+        <p class="info-in">Clique o + para adicionar novos produtos</p>
+
+        <button onclick="startServer()" class="mt-2 submit-button">COMEÇAR</button>
+    </div>
+
+
+    <script src="./index.js"></script>
+    
+</body>
+</html>
