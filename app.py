@@ -25,6 +25,8 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(b'Received POST request')
 
     def do_GET(self):
+        print("GET request recebida")
+        
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
         self.end_headers()
@@ -33,6 +35,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         if self.dataGLOBAL:
             response_data = self.dataGLOBAL
         else:
+            print("Não há dados armazenados")
             response_data = []
 
         # Imprime a variável dataGLOBAL
