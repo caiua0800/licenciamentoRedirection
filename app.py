@@ -2,6 +2,8 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 class RequestHandler(BaseHTTPRequestHandler):
+    # Variável global para armazenar os dados recebidos
+    received_data = []
 
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
@@ -10,6 +12,9 @@ class RequestHandler(BaseHTTPRequestHandler):
 
         for obj in json_data:
             print(f"Nome: {obj['nome']}, Valor: {obj['valor']}, Choice: {obj['choice']}, Intervalo: {obj['intervalo']}")
+        
+        # Adiciona os dados recebidos à lista global
+        self.received_data.extend(json_data)
 
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
@@ -21,12 +26,8 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.end_headers()
         
-        # Simula uma resposta com os dados que foram postados
-        response_data = [
-            {'nome': 'Item 1', 'valor': '12', 'choice': 'real', 'intervalo': '21'},
-            {'nome': 'Item 2', 'valor': '15', 'choice': 'percentual', 'intervalo': '30'}
-        ]
-        self.wfile.write(json.dumps(response_data).encode('utf-8'))
+        # Retorna os dados armazenados na lista global
+        self.wfile.write(json.dumps(self.received_data).encode('utf-8'))
 
 def run(server_class=HTTPServer, handler_class=RequestHandler, port=8000):
     server_address = ('', port)
