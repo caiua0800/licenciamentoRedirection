@@ -3,7 +3,7 @@ import json
 
 class RequestHandler(BaseHTTPRequestHandler):
     
-    dataGLOBAL = []
+    dataGLOBAL = None
 
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
@@ -27,7 +27,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         
         # Retorna os dados armazenados na variável de classe
-        response_data = self.dataGLOBAL
+        response_data = self.dataGLOBAL if self.dataGLOBAL is not None else []
     
         self.wfile.write(json.dumps(response_data).encode('utf-8'))
 
