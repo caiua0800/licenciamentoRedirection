@@ -3,14 +3,14 @@ import json
 
 class RequestHandler(BaseHTTPRequestHandler):
     
-    dataGLOBAL = None
+    dataGLOBAL = []
 
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length)
         json_data = json.loads(post_data)
 
-        # Armazena os dados recebidos na variável de classe
+        # Atualiza os dados globais com os dados recebidos no POST
         self.dataGLOBAL = json_data
         
         for obj in json_data:
@@ -27,7 +27,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         
         # Retorna os dados armazenados na variável de classe
-        response_data = self.dataGLOBAL if self.dataGLOBAL is not None else []
+        response_data = self.dataGLOBAL
     
         self.wfile.write(json.dumps(response_data).encode('utf-8'))
 
