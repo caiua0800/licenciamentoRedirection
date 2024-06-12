@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
     } else if (req.method === 'GET') {
         console.log('GET request recebida');
         res.writeHead(200, {'Content-Type': 'application/json'});
-        // Retorna os dados globais como resposta
+
         res.end(JSON.stringify(dataGlobal));
     } else {
         res.writeHead(405, {'Content-Type': 'text/plain'});

