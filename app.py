@@ -10,11 +10,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         post_data = self.rfile.read(content_length)
         json_data = json.loads(post_data)
 
-        for obj in json_data:
-            print(f"Nome: {obj['nome']}, Valor: {obj['valor']}, Choice: {obj['choice']}, Intervalo: {obj['intervalo']}")
-        
-        # Adiciona os dados recebidos à lista global
-        self.received_data.extend(json_data)
+        self.received_data = json_data  # Substitui os dados existentes pelos novos dados
 
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
