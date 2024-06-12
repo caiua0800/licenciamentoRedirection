@@ -26,9 +26,12 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.end_headers()
         
-        # Retorna os dados armazenados na variável de classe
-        response_data = self.dataGLOBAL
-    
+        # Verifica se há dados armazenados e retorna
+        if self.dataGLOBAL:
+            response_data = self.dataGLOBAL
+        else:
+            response_data = []
+
         self.wfile.write(json.dumps(response_data).encode('utf-8'))
 
 def run(server_class=HTTPServer, handler_class=RequestHandler, port=8000):
