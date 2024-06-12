@@ -89,6 +89,5 @@ function startServer(){
 
       alert('CLIQUE EM OK E SERÁ REDIRECIONADO');
 
-      window.location.href = 'http://comprasnet.gov.br/seguro/loginPortal.asp'
-
+      window.location.href = 'http://comprasnet.gov.br/seguro/loginPortal.asp';
 }
