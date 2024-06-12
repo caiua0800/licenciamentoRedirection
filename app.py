@@ -8,9 +8,10 @@ class RequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length)
-        json_data = json.loads(post_data)
+        json_data = json.loads(post_data.decode('utf-8'))  # Decodifica o JSON do corpo da solicitação
 
-        self.received_data = json_data  # Substitui os dados existentes pelos novos dados
+        # Substitui os dados existentes pelos novos dados
+        self.received_data = json_data
 
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
