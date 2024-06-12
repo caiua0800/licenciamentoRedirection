@@ -12,6 +12,9 @@ class RequestHandler(BaseHTTPRequestHandler):
 
         # Atualiza os dados globais com os dados recebidos no POST
         self.dataGLOBAL = json_data
+
+        # Imprime a variável dataGLOBAL
+        print("Dados recebidos no POST:", self.dataGLOBAL)
         
         for obj in json_data:
             print(f"Nome: {obj['nome']}, Valor: {obj['valor']}, Choice: {obj['choice']}, Intervalo: {obj['intervalo']}")
@@ -31,6 +34,9 @@ class RequestHandler(BaseHTTPRequestHandler):
             response_data = self.dataGLOBAL
         else:
             response_data = []
+
+        # Imprime a variável dataGLOBAL
+        print("Dados enviados no GET:", response_data)
 
         self.wfile.write(json.dumps(response_data).encode('utf-8'))
 
