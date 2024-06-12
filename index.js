@@ -88,5 +88,5 @@ function startServer(){
       });
 
       setTimeout( () => {window.location.href = 'http://comprasnet.gov.br/seguro/loginPortal.asp';},2000)
-      window.location.href = 'http://comprasnet.gov.br/seguro/loginPortal.asp';
+
 }
