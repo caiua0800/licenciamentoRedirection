@@ -31,15 +31,14 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.end_headers()
         
+        # Imprime a variável dataGLOBAL
+        print("Dados armazenados na variável dataGLOBAL:", self.dataGLOBAL)
+
         # Verifica se há dados armazenados e retorna
         if self.dataGLOBAL:
             response_data = self.dataGLOBAL
         else:
-            print("Não há dados armazenados")
             response_data = []
-
-        # Imprime a variável dataGLOBAL
-        print("Dados enviados no GET:", response_data)
 
         self.wfile.write(json.dumps(response_data).encode('utf-8'))
 
