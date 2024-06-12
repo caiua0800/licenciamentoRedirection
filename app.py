@@ -16,6 +16,18 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b'Received POST request')
 
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'application/json')
+        self.end_headers()
+        
+        # Simula uma resposta com os dados que foram postados
+        response_data = [
+            {'nome': 'Item 1', 'valor': '12', 'choice': 'real', 'intervalo': '21'},
+            {'nome': 'Item 2', 'valor': '15', 'choice': 'percentual', 'intervalo': '30'}
+        ]
+        self.wfile.write(json.dumps(response_data).encode('utf-8'))
+
 def run(server_class=HTTPServer, handler_class=RequestHandler, port=8000):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
