@@ -2,6 +2,16 @@ const http = require('http');
 let dataGlobal = [];
 
 const server = http.createServer((req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') {
+        res.writeHead(204);
+        res.end();
+        return;
+    }
+
     if (req.method === 'POST') {
         let body = '';
         req.on('data', chunk => {
@@ -24,7 +34,6 @@ const server = http.createServer((req, res) => {
     } else if (req.method === 'GET') {
         console.log('GET request recebida');
         res.writeHead(200, {'Content-Type': 'application/json'});
-
         res.end(JSON.stringify(dataGlobal));
     } else {
         res.writeHead(405, {'Content-Type': 'text/plain'});
@@ -34,5 +43,5 @@ const server = http.createServer((req, res) => {
 
 const PORT = 8000;
 server.listen(PORT, () => {
-    console.log(`Server running at http://35.87.83.18:${PORT}/`);
+    console.log(`Server running at http://localhost:${PORT}/`);
 });
