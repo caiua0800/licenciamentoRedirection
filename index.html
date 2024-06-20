@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-
     <div class="container-fluid">
-
         <div class="container-box-inicial">
             <h1>A DIFERENÇA MÍNIMA À DIMINUIR DO VALOR VAI SER EM</h1>
             <div>
@@ -18,31 +16,22 @@
             </div>
         </div>
 
-
         <div class="con">
             <div class="container-box"> 
                 <h1 class="title">Seja Bem Vindo ao Robot</h1>
-    
-                <div class="form">
-    
-                </div>
+                <div class="form"></div>
             </div>
-    
-            <button onclick="startServer()" class="mt-2 submit-button">COMEÇAR</button>
+            <button onclick="startServer()" class="mt-2 submit-button" style="display:none;">COMEÇAR</button>
         </div>
-
-
     </div>
 
-    <div class="modal">
+    <div class="modal" style="display:none;">
         <p>QUANTIDADE DE PRODUTOS</p>
         <input id="productsN" placeholder="valor numérico">
-        <input id="intervaloLances" placeholder="Intervalo minimo entre lances">
-
+        <input id="intervaloLances" placeholder="Intervalo mínimo entre lances">
         <button onclick="createProducts()">+</button>
     </div>
 
     <script src="./index.js"></script>
-    
 </body>
 </html>
